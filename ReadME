@@ -1,0 +1,25 @@
+Kafka Producer:
+===============
+
+Kafka Producer will send messages to kafka topic.
+User has complete previleges to configure Kafka Producer. 
+In this example:
+	 1. KafkaProducerService configures Kafka producer.
+	 2. KafkaProducerWrapper specify producing message key & value type. 
+	 	Also here KafkaProducerWrapper are pre-configured for a particular topic, 
+	 	which means you need to create individual KafkaProducerWrapper for each topic.
+	 	KafkaProducerWrapper will have sendSync() and sendAsync() method to send records to kafka.	 	
+	 3. To send message to kafka in this application, One needs to create message of type KafkaMessageDto.
+	 
+	 
+Note:
+Role of key in Kafka:
+	1. The key is commonly used for partitioning and is particularly important if modeling a Kafka topic as a table in KSQL (or KTable in Kafka Streams) for query or join purposes.	
+	2. If a valid partition number is specified that partition will be used when sending the record. If no partition is specified but a key is present a partition will be chosen using a hash of the key. 
+	If neither key nor partition is present a partition will be assigned in a round-robin fashion.	  
+	
+	
+	
+Quick Console Command:
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092,localhost:9093 --topic topic-1 --from-beginning
+bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic topic-1	
