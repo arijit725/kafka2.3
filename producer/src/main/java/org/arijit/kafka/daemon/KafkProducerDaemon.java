@@ -30,10 +30,12 @@ public class KafkProducerDaemon {
 		kafkaProducerService = context.getBean("kafkaProducerService", KafkaProducerService.class);
 		logger.info("kafkaProducerService instance 2: " + kafkaProducerService);
 		kafkaProducerService.init();
-		KafkaProducerWrapper<Integer, String> producer = kafkaProducerService.createProducer("testtopic");
+		KafkaProducerWrapper<Integer, String> producer = kafkaProducerService.createProducer("testtopic1");
 		int i = 0;
 		while (i < 10000) {
-			KafkaMessageDto<Integer, String> message = KafkaMessageDto.createMessage(i, "This is a test: " + i);
+//			KafkaMessageDto<Integer, String> message = KafkaMessageDto.createMessage(i, "This is a test: " + i);
+			// here we have 8 partition, so we are sepcifyig partition as i%8
+			KafkaMessageDto<Integer, String> message = KafkaMessageDto.createMessage(i, "This is a test: " + i, System.currentTimeMillis(), i%8);
 			producer.sendSync(message);
 			i++;
 		}

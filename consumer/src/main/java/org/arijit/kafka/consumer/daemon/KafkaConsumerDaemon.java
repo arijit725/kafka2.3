@@ -6,7 +6,11 @@ import org.arijit.kafka.consumer.context.KafkaConsumerContext;
 import org.arijit.kafka.consumer.service.KafkaConsumerservice;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
-
+/**
+ * KafkaConsumerDaemon will demonstrate how to use KafkaConsumerService
+ * @author arijit
+ *
+ */
 public class KafkaConsumerDaemon {
 
 	private static Logger logger = LogManager.getLogger(KafkaConsumerDaemon.class);
@@ -15,7 +19,7 @@ public class KafkaConsumerDaemon {
 		KafkaConsumerservice kafkaConsumerService =  applicationContext.getBean("kafkaConsumerService", KafkaConsumerservice.class);
 		logger.info("Instantiated kafkaConsumerService: "+kafkaConsumerService);	
 		kafkaConsumerService.init();
-		kafkaConsumerService.start("testtopic");
+		kafkaConsumerService.start("testtopic1");
 		applicationContext.registerShutdownHook();
 		applicationContext.close();
 	}
