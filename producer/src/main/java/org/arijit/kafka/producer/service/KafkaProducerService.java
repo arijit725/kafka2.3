@@ -2,18 +2,13 @@ package org.arijit.kafka.producer.service;
 
 import java.util.Properties;
 
-import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
-import org.apache.kafka.common.serialization.LongSerializer;
-import org.apache.kafka.common.serialization.StringSerializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.arijit.kafka.producer.KafkaProducerWrapper;
 import org.arijit.kafka.producer.config.KafkaProducerConfig;
 import org.arijit.kafka.producer.config.KafkaProducerContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 /**
  * KafkaProducerService will initialize the proucer service for kafka

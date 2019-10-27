@@ -1,10 +1,7 @@
 package org.arijit.kafka.producer.config;
 
-import org.apache.kafka.common.serialization.IntegerSerializer;
-import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 
 /**
  * KafkaProducerConfig will hold properties of kafka required to create

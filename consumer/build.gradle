@@ -27,9 +27,9 @@ sourceCompatibility = 1.8
 
 
 bootJar {
-    baseName = 'Kafka-Producer'
+    baseName = 'kafkaconsumerdemo'
     version =  version
-    mainClassName = 'org.arijit.kafka.daemon.KafkProducerDaemon'
+    mainClassName = 'org.arijit.kafka.consumer.daemon.KafkaConsumerDaemon'
 }
 
 repositories {
