@@ -28,7 +28,9 @@ Role of key in Kafka:
 	3. Replication factor in kafka is completly different than topic partition. Topic partition gives you means to achive more 
        parallalism to your application.
        But Replication factor make sure that you do not lose you data. If your Leader fails then one of replication follower will serve your data. 
-	
+	4. There could be chance that you may not consume last couple of message. This happens when producer does not gather much record till it reaches it buffer size and waiting for linger.ms time to over.
+	   Once the buffer is not even full but linger.ms time is over, kafka producer will send message. But in between that time, if you kill kafka producer, your message is lost forever.
+	    
 	
 Quick Console Command:
 bin/kafka-console-consumer.sh --bootstrap-server localhost:9092,localhost:9093 --topic topic-1 --from-beginning
