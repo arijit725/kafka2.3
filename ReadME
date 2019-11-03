@@ -37,3 +37,29 @@ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092,localhost:9093 -
 bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic topic-1	
 bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic topic-1
 bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic testtopic
+
+
+Gradle Multi-Projects Note:
+==============================
+Here We have used gradle as a multipoject/subproject.
+Here we have two folder:
+	1. producer
+	2. consumer
+They are individual projects. But as they comes under kafka, we keep them together.
+To identify as they are sub-projects, include the in root level settings.gradle.	
+For configuration which is common for all projects use:
+	allprojects {
+	}
+For configuration which is specific to sub-projects use:
+	subprojects {
+	}	
+
+
+use below commands to build producer and consumer:
+	gradle -q projects
+	gradle -q :producer:bootJar
+	gradle -q :producer:bootJar
+	gradle clean :producer:build :consumer:build
+	
+
+	
